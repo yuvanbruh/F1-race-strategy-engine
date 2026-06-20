@@ -61,21 +61,21 @@ M --> N
 <p align="center">
   <img src="images/5.png" width="90%">
 </p>
-*Position evolution of drivers during a simulated Grand Prix.*
+Position evolution of drivers during a simulated Grand Prix.
 
 ## Monte Carlo Analysis
 
 <p align="center">
   <img src="images/2.png" width="90%">
 </p>
-*Monte Carlo analysis showing probabilistic race outcomes.*
+Monte Carlo analysis showing probabilistic race outcomes.
 
 ## Strategy Optimization
 
 <p align="center">
   <img src="images/8.png" width="90%">
 </p>
-*Comparison of alternative tyre and pit-stop strategies.*
+Comparison of alternative tyre and pit-stop strategies.
 
 ## Key Features
 
