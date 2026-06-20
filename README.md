@@ -18,28 +18,37 @@ The final strategy engine compares alternative tyre compounds and pit-stop plans
 
 ## System Architecture
 
-```text
-Historical F1 Telemetry (2019–2025)
-                ↓
-Dataset Construction
-                ↓
-Feature Engineering
-                ↓
-Lap Time Prediction Model
-                ↓
-Overtake Probability Model
-                ↓
-Pit Stop Prediction Model
-                ↓
-Race Simulation Engine
-                ↓
-Monte Carlo Simulation
-                ↓
-Strategy Evaluation Engine
-                ↓
-Optimal Strategy Selection
-```
+```mermaid
+flowchart LR
 
+A[Historical F1 Telemetry<br/>2019-2025]
+
+A --> B[Dataset Construction]
+
+B --> C[Feature Engineering]
+
+C --> D[Lap Time Model<br/>XGBoost Regressor]
+C --> E[Overtake Model<br/>XGBoost Classifier]
+C --> F[Pit Stop Model<br/>XGBoost Classifier]
+
+D --> G[Race Simulation Engine]
+E --> G
+F --> G
+
+G --> H[Monte Carlo Simulation<br/>1000+ Race Runs]
+
+H --> I[Strategy Evaluation Engine]
+
+I --> J[Win Probability]
+I --> K[Podium Probability]
+I --> L[Average Position]
+I --> M[Average Race Time]
+
+J --> N[Optimal Strategy Selection]
+K --> N
+L --> N
+M --> N
+```
 ---
 
 ## Key Features
