@@ -5,6 +5,11 @@ AI-driven Formula 1 race strategy optimization system using historical telemetry
 ## Overview
 
 This project implements an end-to-end Formula 1 race strategy platform capable of learning from historical telemetry data, predicting race behavior, simulating complete races, and evaluating alternative pit-stop and tyre strategies.
+## Demonstration
+
+<p align="center">
+  <img src="images/3.png" width="90%">
+</p>
 
 The system uses multi-season Formula 1 telemetry collected through FastF1 and transforms raw race data into machine-learning features representing tyre degradation, fuel load, traffic conditions, DRS opportunities, and pace evolution.
 
