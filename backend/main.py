@@ -6,10 +6,6 @@ import random
 
 app = FastAPI()
 
-# ---------------------------
-# CORS
-# ---------------------------
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -18,9 +14,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ---------------------------
-# Load all datasets
-# ---------------------------
+
 
 feature_dataset = pd.read_csv("../data/feature_dataset.csv")
 race_dataset = pd.read_csv("../data/race_dataset.csv")
@@ -31,17 +25,13 @@ strategy_results = pd.read_csv("../data/strategy_results.csv")
 
 drivers_list = race_simulation_results["DriverEncoded"].unique().tolist()
 
-# ---------------------------
-# Health check
-# ---------------------------
+
 
 @app.get("/")
 def home():
     return {"message": "F1 Control Room API"}
 
-# ---------------------------
-# Strategy endpoints
-# ---------------------------
+
 
 @app.get("/strategies")
 def get_strategies():
@@ -57,9 +47,7 @@ def get_strategy_results():
 def get_monte_carlo():
     return monte_carlo_results.to_dict(orient="records")
 
-# ---------------------------
-# Race simulation endpoints
-# ---------------------------
+
 
 @app.get("/laps")
 def get_laps():
@@ -77,33 +65,24 @@ def get_driver(driver_id: int):
     df = race_simulation_results[race_simulation_results["DriverEncoded"] == driver_id]
     return df.to_dict(orient="records")
 
-# ---------------------------
-# Race dataset (telemetry)
-# ---------------------------
+
 
 @app.get("/race_dataset")
 def get_race_dataset():
     return race_dataset.to_dict(orient="records")
 
-# ---------------------------
-# ML feature dataset
-# ---------------------------
+
 
 @app.get("/feature_dataset")
 def get_feature_dataset():
     return feature_dataset.to_dict(orient="records")
 
-# ---------------------------
-# Simulation results
-# ---------------------------
+
 
 @app.get("/simulation_results")
 def get_simulation_results():
     return simulation_results.to_dict(orient="records")
 
-# ---------------------------
-# Race summary
-# ---------------------------
 
 @app.get("/race_summary")
 def race_summary():
@@ -116,9 +95,7 @@ def race_summary():
 
     return summary.reset_index().to_dict(orient="records")
 
-# ---------------------------
-# Telemetry websocket
-# ---------------------------
+
 
 @app.websocket("/telemetry")
 async def telemetry(ws: WebSocket):
